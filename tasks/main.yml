@@ -1,0 +1,26 @@
+---
+- name: script that verifies if /usr/ports/README exists and executes portsnap fetch extract if not
+  script: bootstrap-portsnap.sh
+  register: result_bootstrap_ports
+  changed_when: "'Ports tree already installed' not in result_bootstrap_ports.stdout"
+  tags: bootstrap
+
+- name: script that makes sure pkgng is installed
+  script: bootstrap-make-pkg.sh
+  when: bootstrap_install_pkgng
+  register: result_bootstrap_pkgng
+  changed_when: "'pkgng already installed' not in result_bootstrap_pkgng.stdout"
+  tags: bootstrap
+
+- name: script that verify python is installed or installs it
+  script: bootstrap-make-python.sh
+  register: result_bootstrap_python
+  changed_when: "'Python already installed' not in result_bootstrap_python.stdout"
+  tags: bootstrap
+
+- name: script that makes sure portupgrade is installed
+  script: bootstrap-make-portupgrade.sh
+  when: bootstrap_install_portupgrade
+  register: result_bootstrap_portupgrade
+  changed_when: "'Portupgrade already installed' not in result_bootstrap_portupgrade.stdout"
+  tags: bootstrap
