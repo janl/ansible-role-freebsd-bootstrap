@@ -8,8 +8,8 @@ galaxy_info:
 
   platforms:
     - name: FreeBSD
-     versions:
-     - all
+      versions:
+      - all
 
   galaxy_tags:
     - freebsd
