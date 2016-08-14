@@ -1,0 +1,14 @@
+galaxy_info:
+  author: niladic
+  description: Bootstraps a FreeBSD box so ansible can be executed and ports/packages can be managed.
+
+  license: MIT
+
+  min_ansible_version: 1.2
+
+  - name: FreeBSD
+   versions:
+   - all
+
+  galaxy_tags:
+    - freebsd
